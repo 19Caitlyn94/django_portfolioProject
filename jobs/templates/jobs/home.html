@@ -1,5 +1,7 @@
 <!doctype html>
+
 <html lang="en">
+  {% load staticfiles %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +42,7 @@
               <div class="navbar-nav ml-auto">
                 <a class="nav-item nav-link" href="#">Home</a>
                 <a class="nav-item nav-link" href="#">Github</a>
-                <a class="nav-item nav-link" href="#">Resume</a>
+                <a class="nav-item nav-link" href="{% static 'placeholder_resume.jpeg' %}">Resume</a>
                 <a class="nav-item nav-link" href="/blog">Blog</a>
               </div>
             </div>
@@ -56,6 +58,7 @@
       <p>
         <a href="/blog" class="btn btn-primary my-2">Visit my Blog</a>
       </p>
+      <img src="{% static 'placeholder_avatar.jpg' %}" />
     </div>
   </section>
 
