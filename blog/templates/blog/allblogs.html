@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+    {% load staticfiles %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,20 +33,20 @@
   </head>
   <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Caitlyn Fowkes</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link" href="/">Home</a>
-                <a class="nav-item nav-link" href="#">Github</a>
-                <a class="nav-item nav-link" href="#">Resume</a>
-                <a class="nav-item nav-link" href="/blog">Blog</a>
-              </div>
-            </div>
-          </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">Caitlyn Fowkes</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-item nav-link" href="https://github.com/caitlynfowkes">Github</a>
+            <a class="nav-item nav-link" href="{% static 'placeholder_resume.jpeg' %}">Resume</a>
+            <a class="nav-item nav-link active" href="{% url 'allblogs' %}">Blog</a>
+          </div>
+        </div>
+      </nav>
 </header>
 
 <main role="main">
@@ -63,7 +64,7 @@
           <h3 class="mb-0">{{ blogpost.title }}</h3>
           <div class="mb-1 text-muted">{{ blogpost.pub_date_formatted }}</div>
           <p class="card-text mb-auto">{{ blogpost.summary }}</p>
-          <a href="#" class="stretched-link">Continue reading</a>
+          <a href="{% url 'detail' blogpost.id %}" class="stretched-link">Continue reading</a>
         </div>
         <div class="col-auto d-none d-lg-block bg-grey">
                 <img src="{{ blogpost.banner.url }}" width="200" height="250" class="bd-placeholder-img img-responsive">
